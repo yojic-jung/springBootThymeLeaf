@@ -1,0 +1,1890 @@
+<!DOCTYPE html >
+    <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalabe=no">
+            <link rel="stylesheet" type="text/css" href= "/slick/slick.css">
+    		<link rel="stylesheet" type="text/css" href= "/slick/slick-theme.css">
+            <style>
+                html, body{
+                    padding:0px;
+                    margin:0px;
+                    font-family:'Apple SD Gothic Neo','Malgun Gothic' ;
+                }
+                .top-fix-background{
+                    background:#ECECEF;
+                    margin:0px;
+                }
+                
+                .top-fix-logo{
+                   display:inline-block;
+                   width:8%;
+                   margin:0px;
+                }
+                .top-fix-notify{
+                   display:inline-block;
+                   width:40%;
+                  
+                   margin-left:100px;
+                   padding: 15px;;
+                   font-weight:600;
+                }
+                .top-fix-menu{
+                    display:inline-block;
+                    width:35%;
+                    margin:0px;
+                    list-style:none;
+                    text-align: right;
+                  
+                }
+                .top-fix-menu li{
+                    padding:5px;
+                    display:inline-block;
+                }
+
+                .language-opt{
+                    font-size:12px;
+                    cursor:pointer;
+                    
+                }
+                .language-table{
+                    position: absolute;
+                    top:20px;
+                    left:10px;
+                    border:1px solid gray;
+                    padding:0px 5px;font-size:12px;
+                    cursor:pointer;
+                    display:none;
+                    background:white;
+                }
+                
+                .language-table td{
+                    border-bottom:1px solid gray;
+                    padding:5px;
+                    
+                }
+                
+                .top-search-div{
+                    clear:both;
+                    margin:0px;
+                    z-index: 99;
+                    width:100%;
+                    background:white;padding:20px 0px;text-align: center;
+                }
+                
+               
+
+                .top-search-table{
+                    width:60%;
+                    border-spacing:0px;
+                    float:left;
+                    margin-right:0px;
+                    font-size:14px;
+                    text-align: center;
+                }
+                
+                .top-search-table td:first-child{
+                    background:#363E52;
+                    color:white;
+                    padding:15px 0px;
+                    width:20%;
+                   
+                }
+                .top-search-table td:nth-child(2){
+                    border:1px solid #006EAF;background:#006EAF;color:white;
+                    padding:15px 0px;
+                    width:20%;
+                }
+                .top-search-table td:last-child{
+                    border:4px solid #006EAF;
+                    width:60%;
+                    padding:0px;
+                    text-align: left;
+                }
+               
+
+                
+                .seoullibrarylogo{
+                   width:16%;
+                   float:left;
+                   margin-right:50px;
+                }
+                .nav-menu{
+                    font-weight:550;
+                    background: linear-gradient( 90deg, #006EAF 50%, #363E52 50% );
+                    text-align:center;
+                    color:white;
+                    font-size:16px;
+                    min-width: 1200px;
+                    padding:0px;
+                    border-spacing: 0px;
+                    line-height: 180%;
+                }
+                .nav-menu li{
+                    display:inline-block;
+                    padding:20px 20px;
+                    margin:0px;list-style:none;
+                    
+                }
+                .nav-menu li>span{
+                    cursor: pointer;
+                }
+                .nav-menu li:not(:last-child)>span:hover{
+                    cursor: pointer;
+                    color:gold;
+                    border-top:1px solid gold;
+                }
+                
+                .nav-menu li:nth-child(5){
+                    background:#363E52;
+                }
+               
+                
+                .hamburger{width:25px;height:21px;
+                    position:absolute;right:0;top:0;z-index:1;
+                    cursor:pointer;display:inline-block;
+                    box-sizing:border-box;position:relative;
+                    }
+   
+                .hamburger span{display:inline-block;
+                    box-sizing:border-box;
+                    position:absolute;left:0;width:100%;height:3px;
+                    background:white;border-radius:4px
+                    }
+   
+                .hamburger span:nth-of-type(1){
+                    top:0;left:0px}
+   
+                .hamburger span:nth-of-type(2){
+                    top:9px;left:0px}
+   
+                .hamburger span:nth-of-type(3){
+                    bottom:0;left:0px}
+                .nav-detail-menu{
+                    display:none;
+                    width:100%;
+                    
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    z-index: 99;
+                    background:white;
+                    border-top:3px solid #006EAF;
+                    box-shadow: 0px 4px 10px -4px gray;
+                }
+                .nav-detail-table{
+                    width:1200px;
+                    min-width: 1200px;
+                    margin:20px auto;
+                    border-spacing: 0px;
+                    text-align:center;
+                    background-color: white;
+                    font-size:14px;
+                }
+                .nav-detail-table td{
+                    padding:10px 0px;
+                    border-right:1px solid gray;
+                }
+                
+
+                .nav-detail-table tr:first-child td:nth-child(n+5):nth-child(-n+8) span{
+                    color:white;
+                    background:#363E52;
+                    padding:5px 20px;
+                }
+
+                .nav-detail-table tr:first-child td:nth-child(n+1):nth-child(-n+4) span{
+                    padding:5px 20px;
+                    background:#006EAF;
+                    color:white;
+                }
+                .detail-menu-close{
+                    font-size:30px;
+                    padding:5px 10px;
+                    background:#EAEAEA;
+                    color:dimgray;
+                    cursor:pointer;
+                }
+                
+ 				.img-slider{
+					height:330px;
+				}
+				
+                .img-slider-content1, .img-slider-content2, .img-slider-content3, .img-slider-content4{
+                    position:absolute;
+                    width:100%;
+                    top:0px;
+                    left:0px;
+                }
+                .img-slider-content2, .img-slider-content3, .img-slider-content4{
+                    left:100%;
+                }
+                .img-slider-left-btn{
+                    padding:20px;
+                    position:absolute;
+                    top:50%;
+                    transform: translateY(-50%);
+                    left:0px;
+                    z-index: 3;
+                    padding:10px;
+                    background:black;
+                    opacity: .5;
+                    cursor:pointer;
+                }
+                .img-slider-right-btn{
+                    padding:10px;             
+                    position:absolute;
+                    top:50%;
+                    transform: translateY(-50%);
+                    right:0px;
+                    z-index: 3;
+                    background:black;
+                    opacity: .5;
+                    cursor:pointer;
+                }
+                
+                .m-quick-box{
+                	display:none;
+                }
+                .info-box{
+                    font-weight:550;
+                    font-size:12px;
+                    padding:0px 20px;
+                    border:10px solid #C6C6C7;
+                    display:inline-block;
+                    margin-left:15px;
+                    height:310px;
+                    
+                }
+                .current-date{
+                    text-align:center;
+                    margin:0px;
+                    line-height:200%;
+                }
+                .opening-time{
+                    text-align:center;
+                    font-size:16px;
+                    margin:0px;
+                    line-height:200%;
+                }
+                .info-box-book{
+                    font-size:12px;
+                    border-spacing:10px 5px;
+                }
+
+                
+
+               
+				
+                    
+                
+                .info-grid-schedule{
+                    margin: 0px;
+                    padding:0px;
+                    list-style: none;
+                }
+                
+                .today-date{
+                    position: relative;
+                    margin-top:20px;
+                    font-size:30px;
+                    font-weight: bolder;
+                    text-align: center;
+                }
+                .today-date img{
+                    width:80px;
+                    position: absolute;
+                    top:-10px;
+                    right:20px;
+                }
+                .info-box-container{
+                	padding-right:15px;
+                    height: 300px;
+                }
+                .gray-box{
+                    margin:0px;
+                    background: #EFEFF1;
+                    height:50%;
+                }
+                
+                
+                .video-slider-div{
+                    position: relative;
+                    top:-32px;
+                    background: black;
+                    opacity: .6;
+                    text-align: right;
+                    color:white;
+                    font-size:15px;
+                    padding:5px 30px 5px 0px;
+                }
+                .video-slider-div span{
+                    cursor: pointer;
+                }
+                
+                .bottom-detail-grid1{
+                    line-height: 180%;
+                    display: grid;
+                    grid-template-columns:27% 22% 29% 22%;
+                    
+                }
+                .bottom-detail-grid2{
+                    line-height: 180%;
+                    display: grid;
+                    grid-template-columns:repeat(2,50%);
+                }
+                .bottom-detail-grid1 ul, .bottom-detail-grid2 ul{
+                    margin-left:-10px;
+                }
+                
+                .bottom-detail-grid1 li a, .bottom-detail-grid2 li a{
+                    margin-left:-8px;
+                    color:black;
+                    text-decoration: none;
+                }
+				.bottom-detail1-btn ,.bottom-detail2-btn{
+					display:none;
+				}
+				
+ 				@media screen and (min-width: 1000px) {
+ 					.top-fix{
+                    	font-weight:bolder;
+                    	width:1200px;
+                    
+                    	margin:0px auto;
+                   	 	color:dimgray;
+                    	font-size:14px;
+                	}
+ 					.top-search-div-inside{
+                 		width:1200px;
+                 		margin:10px auto;
+                 		min-width: 1200px;
+                 		font-size:12px;
+                 		font-weight: bolder;
+                	}
+                	.m-top{
+                		display:none;
+                	}
+	                .top-search-input{
+	                	width:85%;border:none;padding:15px;
+	               }
+	                .search-icon{
+	                    width:7%;
+	                    vertical-align: middle;
+	                    cursor:pointer;
+	                }
+                	.img-slider-div{
+                		width:1200px;min-width:1200px;margin:auto;
+                	}
+                	.img-slider{
+                   		width:65%;
+                    	float:left;
+                    	position: relative;
+                    	font-size:30px;
+                    	font-weight: bolder;
+                    	color:white;
+                    	overflow: hidden;
+                    	
+                	}
+                    .circle-grid-container{
+                        font-weight: bolder;
+                        width:1000px; 
+                        padding:20px 0px;
+                        font-size:14px;
+                        margin:20px auto;
+                        display: grid;
+                        grid-template-columns: 120px 120px 120px 120px 120px 120px 120px 120px;
+                    }
+                    .circle-grid-container div{
+                        text-align: center;
+                        line-height: 180%;
+                    }   
+                    .circle-grid-container img{
+                        background: white;
+                        cursor:pointer;
+                        padding:5px;
+                        border-radius:35px;
+                        width:60px;
+                        height:60px;
+                    }
+                    .circle-grid-container img:hover{
+                       background: gray;
+                       text-align: center;
+                       padding:5px;
+                       border-radius:35px;
+                       width:60px;
+                       height:60px;
+                    }
+                   
+
+					.new-book-title-div{
+						width:1200px;min-width:1200px;margin:60px auto 40px auto;border-bottom:3px solid #006EAF;padding: 10px;
+					}
+                    .new-book-title{
+                        cursor: pointer;
+                        font-size:20px;
+                        font-weight: bolder;
+                    }
+                    
+                    
+                    .popular-book-title{
+                        cursor: pointer;
+                        font-size: 20px;
+                        font-weight: bolder;
+                        color:gray;
+                    }
+                    
+                    .popular-book-title:hover{
+                        color:black;
+                    }
+                    
+                 #slick-slider1 {
+        			width: 1100px;
+        			min-width: 1100px;
+        			margin: 40px auto 80px auto;
+        			height:320px;
+    			}
+    			.slick-slide {
+      				margin: 0px 20px;
+    			}
+
+    			.slick-slide img {
+     				width: 100%;
+    			}
+
+    			.slick-prev:before, .slick-next:before {
+      				color: white;
+      				padding:10px;
+      				background:lightgray;
+      				font-size:20px;
+    			}
+    			.slick-prev:before{
+    				content:"<";
+    			}
+    			.slick-next:before{
+    				content:">";
+    			}
+    			
+
+    			.slick-slide {
+      				transition: all ease-in-out .3s;
+      				width:180px;
+    				height:300px;
+    				overflow:hidden;
+    				border:3px solid gray;	
+    			}
+    			
+    			#slick-slider1 a{
+    				text-decoration:none;
+    			}
+    			
+    			 #slick-slider2 {
+        			width: 1100px;
+        			min-width: 1100px;
+        			margin: 40px auto 80px auto;
+        			height:320px;
+    			}
+    			
+    			#slick-slider2 a{
+    				text-decoration:none;
+    			}
+    			#slick-slider2 img {
+     				width: 100%;
+     				height:300px;
+    			}
+                    
+                    
+                    
+                    .info-grid-container{
+                    	width:1200px;
+                    	min-width: 1200px;
+                    	margin:auto;
+                    	display: grid;
+                    	grid-template-columns: 30% 30% 40% ;
+                    
+                	}
+                	.info-grid-schedule li{
+                    	padding:20px 0px 0px 20px;
+                    	display: inline-block;
+                	}
+                	.info-grid-schedule li:nth-child(1){
+                    	font-size:20px;
+                    	font-weight: bolder;
+                	}
+                	.info-grid-schedule li:nth-child(2){
+                    	font-size:12px;
+                    	font-weight: bolder;
+                    	color:white;
+                    	padding:5px 20px; 
+                    	border-radius: 20px;
+                    	background:rgb(94,102,122);
+                    	margin:15px 10px 0px 0px;
+                    	float: right;
+                    	clear:both;
+                	}
+                	.gold-box{
+                    	text-align: center;
+                    	vertical-align: bottom;
+                    	line-height: 200%;
+                    	font-size:20px;
+                    	background:#C7AE7C;
+                    	height:50%;
+                    	
+                	}
+                	
+	                .infomap-grid-container{
+	                	padding-right:15px;
+	                    height:300px;
+	                    display: grid;
+	                    grid-template-rows: repeat(3, 67px);
+	                    gap:10px;
+	                }
+                
+                	.infomap-grid-container div{
+                    	position: relative;
+                    	font-size:20px;
+                    	font-weight:bolder;
+                    	color:dimgray;
+                    	text-align: center;
+                   	
+                    	padding:20px 10px;
+                    	border:1px solid lightgray;
+
+                	}
+                
+                	.infomap-grid-container img{
+                    	width:30px;
+                    	height:30px;
+                    	position: absolute;
+                    	left:20px;
+                	}	
+                    
+                    .bottom-grid-nav{
+                   		width:1200px;
+                    	min-width: 1200px;
+                    	margin:auto;
+                    	display: grid;
+                    	grid-template-columns: 10% 50% 10% 30%;
+                    	line-height: 140%;
+                	}
+                	
+                	.bottom-nav-title1{
+                		padding:10px 10px 0px 10px; 
+                		background:#006EAF;
+                		color: white;
+                		text-align:center;
+                		line-height: 200%;
+                		font-weight: bolder;font-size:20px;
+                	}
+                	
+                	.bottom-nav-title2{
+                		padding:10px 10px 0px 10px; 
+                		background: #363E52;
+                		color: white;
+                		text-align:center;
+                		line-height: 200%;
+                		font-weight: bolder;
+                		font-size:20px;
+                	}
+                	
+                	
+                	.bottom-detail-grid1 li, .bottom-detail-grid2 li{
+                    font-size:13px;
+                    
+                    padding:0px;
+                    margin: 0px;
+                	}
+                	.go-first{
+                    	display:none;
+                    	position:fixed;
+                    	bottom:20px;
+                    	right:20px;
+                    		padding:0px 10px;
+                    	font-size:40px;
+                    	background:#363E52;
+                    	color:white;
+                    	cursor: pointer;
+                	}
+                }
+                @media screen and (max-width: 1000px){
+                
+                .m-top{
+                	width:100%:
+                }
+                .m-top-table{
+                	width:100%;
+                }
+                .m-top-table td:first-child{
+                	width:20%;
+                }
+                .m-top-table td:nth-child(2){
+                	width:60%;
+                }
+                .m-top-table td:nth-child(3){
+                	width:20%;
+                }
+                .m-top-table td{
+                	vertical-align:bottom;
+                	text-align:center;
+                	font-weight:bolder;
+                	font-size:20px;
+                	color:dimgray;
+                }
+                .m-top-fix{
+                	width:100%;
+                	text-align:right;padding:20px 0px;background:rgb(0,110,175);z-index:99;
+                }
+                .m-top-fix-table{
+                	width:100%;
+                	color:white;
+                	font-weight:bolder;
+                }
+                .m-top-fix-table td:first-child{
+                	width:30%;
+                	text-align:left;
+                	font-size:20px;
+                	display:none;
+                	padding-left:30px;
+                }
+                .m-top-fix-table td:nth-child(2){
+                	width:70%;
+                	text-align:right;
+                	padding-right:30px;
+                }
+                .m-hamburger{width:25px;height:21px;
+                    position:absolute;right:0;top:0;z-index:1;
+                    cursor:pointer;display:inline-block;
+                    box-sizing:border-box;position:relative;
+                    }
+   
+                .m-hamburger span{display:inline-block;
+                    box-sizing:border-box;
+                    position:absolute;left:0;width:100%;height:3px;
+                    background:white;border-radius:4px
+                    }
+   
+                .m-hamburger span:nth-of-type(1){
+                    top:0;left:0px}
+   
+                .m-hamburger span:nth-of-type(2){
+                    top:9px;left:0px}
+   
+                .m-hamburger span:nth-of-type(3){
+                    bottom:0;left:0px}
+                    
+                    
+                .top-search-div{
+                	padding:0px;
+                }
+                    .top-search-div-inside{
+                 	width:100%;
+                 	margin:10px auto;
+                 	font-size:12px;
+                 	font-weight: bolder;
+                }
+               
+
+                .top-search-table{
+                    width:95%;
+                    border-spacing:0px;
+                    float:left;
+                    margin:auto;
+                    font-size:14px;
+                    text-align: center;
+                    float:none;
+                }
+                .top-search-input{
+                	width:83%;border:none;padding:15px;
+               }
+                .search-icon{
+                    width:7%;
+                    vertical-align: middle;
+                    cursor:pointer;
+                }
+               .top-fix-background, .login-div, .seoullibrarylogo-span,  .representative-span, .pc-nav{
+                     display: none;
+                }
+                    
+                .m-quick-box{
+                	width:98%;
+                	display:grid;
+                	margin:auto;
+                	grid-template-columns:repeat(3,33%);
+                	grid-column-gap:5px;
+                	text-align:center;
+                	color:white;
+                	font-weight:bolder;
+                }
+                .m-quick1{
+                	margin:10px 0px;
+                	border-radius:10px;
+                	padding:20px;
+                	background:rgb(0,110,175);
+                	
+                }
+                .m-quick2{
+                	margin:10px 0px;
+                	border-radius:10px;
+                	background:rgb(54,62,82);
+                	padding:20px;
+                }
+                .m-quick3{
+                	margin:10px 0px;
+                	border-radius:10px;
+                	background:rgb(163,139,99);
+                	padding:20px;
+                }
+                .circle-grid-container{
+                        font-weight: bolder;
+                        width:80%; 
+                        padding:20px 0px;
+                        font-size:14px;
+                        margin:20px auto;
+                        display: grid;
+                        grid-template-columns: repeat(4,25%);
+                        grid-row-gap:30px;
+                    }
+                    .circle-grid-container div{
+                        text-align: center;
+                        line-height: 180%;
+                        
+                    }   
+                    .circle-grid-container img{
+                        background: white;
+                        cursor:pointer;
+                        padding:5px;
+                        border-radius:35px;
+                        width:60px;
+                        height:60px;
+                    }
+                    .circle-grid-container img:hover{
+                       background: gray;
+                       text-align: center;
+                       padding:5px;
+                       border-radius:35px;
+                       width:60px;
+                       height:60px;
+                    }
+                    
+                .img-slider-div{
+                	width:100%;
+                }
+                .img-slider{
+                   width:100%;
+                    position: relative;
+                    font-size:30px;
+                    font-weight: bolder;
+                    color:white;
+                    overflow: hidden;
+                    float:none;
+                }
+                
+                .info-box{
+                	width:96%;
+                	padding:10px 0px;
+                	text-align:center;
+                	margin:0px;
+                	height:auto;
+                	line-height:200%;
+                }
+                
+                 .info-box-img{
+                 	display:none;
+                 }   
+                
+                .info-box-book{
+                	width:100%;
+                	text-align:center;
+                	margin:auto;
+                }
+                .info-grid-container{
+                    width:100%;;
+                    margin:auto;
+                    display: grid;
+                    grid-template-columns: 25% 25% 50% ;
+                    
+                }
+                .info-grid-schedule{
+                	text-align:center;
+                }
+                .info-grid-schedule li{
+                    padding:20px 0px 0px 20px;
+                    display:block;
+                }
+                .info-grid-schedule li:nth-child(1){
+                    font-size:20px;
+                    font-weight: bolder;
+                }
+                .info-grid-schedule li:nth-child(2){
+                	display:inline-block;
+                    font-size:12px;
+                    font-weight: bolder;
+                    color:white;
+                    padding:5px 20px; 
+                    border-radius: 20px;
+                    background:rgb(94,102,122);
+                }
+                
+                .gold-box{
+                    text-align: center;
+                    vertical-align: bottom;
+                    line-height: 200%;
+                    font-size:17px;
+                    background:#C7AE7C;
+                    height:50%;
+                    
+                }
+                
+                .info-box-container{
+                	padding-right:10px;
+                }
+                
+                .infomap-grid-container{
+                	padding-right:10px;
+                    height:300px;
+                    display: grid;
+                    grid-template-rows: repeat(3, 67px);
+                    gap:10px;
+                }
+                
+                
+                .infomap-grid-container div{
+                    position: relative;
+                    font-size:18px;
+                    font-weight:bolder;
+                    color:dimgray;
+                   
+                    padding:20px 10px;
+                    border:1px solid lightgray;
+
+                }
+                
+                .infomap-grid-container img{
+                    width:18px;
+                    height:18px;
+                }
+                
+                .calendar-img{
+                	display:none;
+                }
+                
+                
+					.new-book-title-div{
+						width:100%;margin:60px auto 40px auto;border-bottom:3px solid #006EAF;padding: 10px 0px;
+					}
+                    .new-book-title{
+                        cursor: pointer;
+                        font-size:20px;
+                        font-weight: bolder;
+                        padding:10px;
+                    }
+                    
+                    
+                    .popular-book-title{
+                        cursor: pointer;
+                        font-size: 20px;
+                        font-weight: bolder;
+                        color:gray;
+                        padding:10px;
+                    }
+                    
+                    .popular-book-title:hover{
+                        color:black;
+                    }
+                    
+	                #slick-slider1, #slick-slider2{
+	        			width: 100%;
+	        			margin: 40px auto 80px auto;
+	        			height:320px;
+	    			}
+	    			#slick-slider1 img {
+	     				width: 100%;
+	    			}
+	    			
+					#slick-slider2 img {
+	     				width: 100%;
+	     				height:300px;
+	    			}
+	    			
+	    			#slick-slider1 a, #slick-slider2 a{
+	    				text-decoration:none;
+	    			}
+	    			
+	    			.slick-prev:before, .slick-next:before {
+      					color: white;
+      					padding:10px;
+      					background:lightgray;
+	      				text-align:center;
+	      				font-size:30px;
+	    			}
+	    			.slick-prev:before{
+	    				content:"<";
+	    			}
+	    			.slick-next:before{
+	    				content:">";
+	    				
+	    			}
+    			
+	    			.slick-prev, .slick-prev:hover{
+	    				z-index:50;
+	    				left:0px;
+	    			}
+					.slick-next, .slick-next:hover{
+						z-index:50;
+	    				right:20px;
+	    				
+	    			}
+	    			.slick-slide {
+	      				transition: all ease-in-out .3s;
+	      				width:100px;
+	    				height:300px;
+	    				overflow:hidden;
+	    				border:3px solid gray;	
+	    				margin: 0px 20px;
+	    			}
+	    			.slick-list{
+    					width:80%;
+    					margin:auto;
+    				}
+    				
+                    .bottom-grid-nav{
+                    	width:100%;
+                    	margin:auto;
+                    	display: grid;
+                    	grid-template-columns: 20% 80%;
+                    	grid-row-gap:20px;
+                    	line-height: 140%;
+                	}
+                	.bottom-nav-title1{
+                		min-width:100px;
+                		padding:10px 10px 0px 10px; 
+                		background:#006EAF;
+                		color: white;
+                		text-align:center;
+                		line-height: 200%;
+                		font-weight: bolder;font-size:20px;
+                	}
+                	
+                	.bottom-nav-title2{
+                		min-width:100px;
+                		padding:10px 10px 0px 10px; 
+                		background: #363E52;
+                		color: white;
+                		text-align:center;
+                		line-height: 200%;
+                		font-weight: bolder;
+                		font-size:20px;
+                	}
+                	
+                	
+                	.bottom-detail-grid1 li, .bottom-detail-grid2 li{
+                    font-size:12px;
+                    
+                    padding:0px;
+                    margin: 0px;
+                	}
+	                .go-first{
+	                    display:none;
+	                    position:fixed;
+	                    bottom:20px;
+	                    right:20px;
+	                    padding:0px 10px;
+	                    font-size:30px;
+	                    background:#363E52;
+	                    color:white;
+	                    cursor: pointer;
+	                    z-index:60;
+	                }
+                }
+                @media screen and (max-width: 750px){
+                	.infomap-grid-container div{
+                    	font-size:15px;
+                	}
+                
+                	.infomap-grid-container img{
+                    	width:15px;
+                    	height:15px;
+                	}
+                	
+                	 #slick-slider1, #slick-slider2  {
+        				width: 100%;;
+        				min-width: 500px;
+        				margin: 40px auto 80px auto;
+        				height:320px;
+    				}
+        			#slick-slider1 a, #slick-slider2 a{
+    					text-decoration:none;
+    				}	
+    				#slick-slider1 img {
+     					width: 100%;
+    				}
+    				#slick-slider2 img {
+     					width: 100%;
+     					height:300px;
+    				}
+    				.slick-prev:before, .slick-next:before {
+      					color: white;
+	      				text-align:center;
+	      				font-size:30px;
+	    			}
+	    			.slick-prev:before{
+	    				content:"<";
+	    			}
+	    			.slick-next:before{
+	    				content:">";
+	    				
+	    			}
+    			
+	    			.slick-prev, .slick-prev:hover{
+	    				z-index:50;
+	    				left:0px;
+	    			}
+					.slick-next, .slick-next:hover{
+						z-index:50;
+	    				right:20px;
+	    				
+	    			}
+    				.slick-slide {
+      					transition: all ease-in-out .3s;
+      					width:100px;
+    					height:300px;
+    					overflow:hidden;
+    					border:3px solid gray;	
+    				}
+    				.slick-list{
+    					width:70%;
+    					margin:auto;
+    				}
+    				
+    				
+    				.info-grid-container{
+                    	width:90%;
+                    	margin:auto;
+                    	display: block;
+                    
+                	}
+                	.infomap-grid-container{
+                		margin:30px 0px;
+                		display:grid;
+                		grid-template-columns:50% 50%;
+                		grid-row-gap:0px;
+                		grid-column-gap:0px;
+                		grid-template-rows:none;
+                		height:auto;
+                		text-align:center;
+                	}
+                	
+    				
+    				.bottom-grid-nav{
+                   		width:100%;
+                   		display:block;
+                    	line-height: 140%;
+                	}
+                	.bottom-nav-title1, .bottom-nav-title2{
+                		width:20%;
+                	}
+                	
+    				.go-first{
+	                    display:none;
+	                    position:fixed;
+	                    bottom:20px;
+	                    right:20px;
+	                    padding:0px 10px;
+	                    font-size:30px;
+	                    background:#363E52;
+	                    color:white;
+	                    cursor: pointer;
+	                    z-index:60;
+	                }
+                }
+                
+                 @media screen and (max-width: 650px){
+	                 .circle-grid-container{
+	                        font-weight: bolder;
+	                        width:100%; 
+	                        padding:20px 0px;
+	                        font-size:14px;
+	                        margin:20px auto;
+	                        display: grid;
+	                        grid-template-columns: repeat(4,25%);
+	                        grid-row-gap:30px;
+	                    }
+	                    .circle-grid-container div{
+	                        text-align: center;
+	                        line-height: 180%;
+	                        
+	                    }   
+	                    .circle-grid-container img{
+	                        background: white;
+	                        cursor:pointer;
+	                        padding:5px;
+	                        border-radius:40px;
+	                        width:80px;
+	                        height:80px;
+	                    }
+	                    .circle-grid-container img:hover{
+	                       background: gray;
+	                       text-align: center;
+	                       padding:5px;
+	                       border-radius:40px;
+	                       width:80px;
+	                       height:80px;
+	                    }
+                 		.bottom-nav-title1, .bottom-nav-title2{
+                 			width:100%;
+                 			text-align:left;
+                 			padding:10px;
+                 			margin-bottom:10px;
+                 		}	
+                 		.bottom-nav-title1-img, .bottom-nav-title2-img{
+                 			display:none;
+                 		}
+                 		.bottom-detail-grid1, .bottom-detail-grid2{
+                 			line-height:250%;
+                 			display: none;
+                        	grid-template-columns: repeat(2,50%);
+                        	margin-bottom:30px;
+                 		}
+                 		.bottom-detail-grid1 ul, .bottom-detail-grid2 ul{
+                 			margin:0px;
+                 		}
+                 		
+                 		.bottom-detail1-btn ,.bottom-detail2-btn{
+                 			cursor:pointer;
+							display:inline-block;
+							float:right;
+							clear:both;
+							margin-right:10px;
+						}
+				
+                 }	
+                
+                
+                
+            </style>
+        </head>
+        <body>
+            <header>
+                <div class="top-fix-background">
+                    <div class="top-fix">
+                        <div class="top-fix-logo"><img src="/img/seoullogo.JPG" style="width:100%;vertical-align:middle;"></div>
+                        <div class="top-fix-notify">
+                            <img src="/img/volume.png" style="width:16px;height:16px;vertical-align:text-bottom;margin-right: 10px;">
+                            <span class="notify-content">특허청-서울시 아이디어 공모전</span>
+                        </div>
+                        <ul class="top-fix-menu">
+                             <li>서울소식</li>
+                             <li>응답소</li>
+                             <li>정보공개</li>
+                             <li>분야별정보</li>
+                        </ul>
+                    </div>             
+                </div>
+                <div class="login-div" style="width:1200px;margin:10px auto;min-width: 1200px;font-size:12px;font-weight: bolder;">
+                    <div>
+                        <table style="width:40%;float:right;margin:10px 0px 20px 0px;">
+                            <tr>
+                                <td>로그인</td>
+                                <td>회원가입</td>
+                                <td>나의공간</td>
+                                <td>비대면자격확인</td>
+                                <td style="position: relative;"><span class="language-opt">LANGUAGE &#9660;</span>
+                                    <table class="language-table">
+                                        <tr><td>ENGLISH</td></tr>
+                                        <tr><td>中国文字</td></tr>
+                                        <tr><td>日本語</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="m-top">
+                	<table class="m-top-table">
+                		<tr>
+                		<td>나의공간</td>
+                		<td><img src="/img/seoullibrarylogo.gif" /></td>
+                		<td>로그인</td>
+                		</tr>
+                	</table>
+                	<div class="m-top-fix">
+                		<table class="m-top-fix-table">
+                			<tr>
+                			<td class="m-top-fix-menu">나의공간</td>
+	                			<td>
+		                			<span class="m-hamburger">
+		                                <span> </span>
+		                                <span> </span>
+		                                <span> </span>
+		                         	</span>
+	                         	</td>
+                         	</tr>
+                         </table>
+                	</div>
+                </div>
+                
+                <div class="top-search-div">
+                    <div class="top-search-div-inside">
+                        
+                        <span class="seoullibrarylogo-span"><img src="/img/seoullibrarylogo.gif" class="seoullibrarylogo" /></span>
+                            <form class="search-form">
+                                <table class="top-search-table">
+                                    <tbody>
+                                        <tr>
+                                            <td><label><input type="radio" name="searchOption" checked/>통합검색</label></td>
+                                            <td><label><input type="radio" name="searchOption"/>소장자료검색</label></td>
+                                            <td><input class="top-search-input" type="text" /><img class="search-icon" src="/img/search-icon.png"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <span class="representative-span"><img src="/img/representative.jpg" class="representative" /></span>                            
+                        
+                    </div>
+                </div>
+                <div class="offset-info"></div>
+                <nav class="pc-nav" style="position: relative;">
+                    <ul class="nav-menu">
+                        <li><span>자료검색</span></li>
+                        <li><span>도서관 이용</span></li>
+                        <li><span>신청&middot;참여</span></li>
+                        <li><span>도서관 소개</span></li>
+                        <li><span>도서관 정책</span></li>
+                        <li><span>도서관 지원</span></li>
+                        <li><span>독서문화 활동</span></li>
+                        <li></li>
+                        <li>
+                            <span class="hamburger">
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                            </span>
+                        </li>
+                    </ul>
+                    
+                    <div class="nav-detail-menu">
+                        <table class="nav-detail-table">
+                            <tr>
+                                <td><span>자료검색</span></td>
+                                <td><span>도서관 이용</span></td>
+                                <td><span>서울의 도서관</span></td>
+                                <td><span>신청&middot;참여</span></td>
+                                <td><span>도서관 소개</span></td>
+                                <td><span>도서관 정책</span></td>
+                                <td><span>독서문화 활동</span></td>
+                                <td><span>서울의 도서관</span></td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                            <tr>
+                                <td>test</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           
+                            <tr>
+                                <td colspan="8"></td>
+                            </tr>
+                        </table>
+                        <div style="width:1200px;min-width:1200px;margin:40px auto;text-align: right;"><span class="detail-menu-close">X</span></div>
+                    </div>
+                </nav>
+               
+            </header>
+            <section>
+            
+            <div class="img-slider-div">
+                <div class="img-slider">
+                    <span class="img-slider-left-btn">&lt;</span>
+                    <span class="img-slider-right-btn">&gt;</span>
+                    <img class="img-slider-content1" src="/img/main-image.jpg" />
+                    <img class="img-slider-content2" src="/img/20210119.jpg" />
+                    <img class="img-slider-content3" src="/img/main-image1.jpg" />
+                    <img class="img-slider-content4" src="/img/main-image3.jpg" />
+                </div>
+                <div class="m-quick-box">
+                	<div class="m-quick1">전자책&middot;오디오북</div>
+                	<div class="m-quick2">내서재</div>
+                	<div class="m-quick3">모바일회원증</div>
+                </div>
+                <div class="info-box">
+                    <p class="current-date"></p>
+                    <p class="opening-time">서울도서관의 오늘 | </p>
+                    <table class="info-box-book">
+                        <tr>
+                            <td>대출 : <span th:text="${library.loan}"></span>권</td><td >반납 : <span th:text="${library.returnBook}"></span>권</td>
+                        </tr>
+                        <tr>
+                            <td>예약 : <span th:text="${library.reservation}"></span>권</td><td>보존서고 신청 : <span th:text="${library.preservation}"></span>권 </td>
+                        </tr>
+                    </table>
+                    
+                    <p style="margin:10px;border-top:2px solid black;padding-top:15px;line-height: 150%;font-size:12px;">한 주간 새로 들어온 도서는 <span th:text="${bookStack}"></span> 권 입니다.<br/>
+                        ※현재 서울도서관 누적 대출권수 : <span th:text="${newBook}"></span>권
+                    </p>
+                    <div class="info-box-img" style='text-align: center;'><img style="width:90%" src="/img/img_lib.jpg"/></div>
+                </div>
+            </div>
+            <div style=" background: #ECECEF;">
+                <div class="circle-grid-container">
+                    <div><img src="/img/computer.png"/><br/>전자책&middot;오디오북</div>
+                    <div><img src="/img/book.png"/><br/>희망도서신청</div>
+                    <div><img src="/img/message.png"/><br/>도서관에 바란다</div>
+                    <div><img src="/img/comment.png"/><br/>이용안내</div>
+                    <div><img src="/img/books.png"/><br/>강좌신청</div>
+                    <div><img src="/img/search.png"/><br/>도서통합검색</div>
+                    <div><img src="/img/library.png"/><br/>서울의 도서관</div>
+                    <div><img src="/img/bookstore.png"/><br/>동네책방</div>
+                </div>
+            </div>
+			<div id="slick-slider1">
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            				<img src="/img/book1.png">
+            				<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            				<img src="/img/book2.jpg">
+            				<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book3.jpg" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book4.png" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfaasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfassdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book5.png" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfaasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfassdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book6.png" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfassdfasdfasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book7.png" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book8.png" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfas</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book9.jpg" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfasasdfasdfadfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasd</div>
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book9.jpg" >
+            			<div style="white-space: normal;word-break: break-all;margin:2px;color:black;">asdfasdfasdfasasdfasdfasdfadfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasdfasdfasasdfasd</div>
+            			</a>
+            		</div>
+        	</div> 
+
+            <div class="new-book-title-div">
+                <span class="new-book-title">새로 들어온 책 &gt;</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+                <span class="popular-book-title">대출이 많은 책 &gt;</span>
+            </div>
+
+            <div id="slick-slider2">
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            				<img src="/img/book1.png">
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            				<img src="/img/book2.jpg">
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book3.jpg" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book4.png" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book5.png" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book6.png" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book7.png" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book8.png" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book9.jpg" >
+            			</a>
+            		</div>
+            		<div class="slick-content">
+            			<a href="#" style="text-decoration:none;">
+            			<img src="/img/book9.jpg" >
+            			</a>
+            		</div>
+        	</div>
+
+            <div class="info-grid-container">
+                <div class="info-box-container">
+                    <div class="gray-box">
+                        <ul class="info-grid-schedule">
+                            <li>2021년 05월</li>
+                            <li>행사달력 보기+</li>
+                        </ul>
+                        <div class="today-date">09일<img class="calendar-img" src="/img/calendar.png"></div>
+                    </div>
+                    <div class="gold-box">
+                        <div style="padding-top:30px;font-weight: bolder;">정기휴관일</div>
+                        <div style="color:white;font-weight: bolder;">2021년 5월 10일 월요일</div>
+                    </div>
+                </div>
+                <div class="infomap-grid-container">
+                    <div><img src="/img/pin.png" /> 찾아오시는길</div>
+                    <div><img src="/img/phone-call.png" /> 전화번호</div>
+                    <div><img src="/img/colorBook.png"/> 서울책보고</div>
+                    <div><img src="/img/colorLibrary.png"/> 서울도서관X동네책방</div>
+                </div>
+                <div>
+                    <img class="video-slider-img" src="/img/videoimg1.jpg" style="width:100%;height: 300px;display: block;"/>
+                    <div class="video-slider-div">
+                        <span class="video-slider-img-num" style="color:orange;">1</span>/5 &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="video-prev">&lt;</span>&nbsp;&nbsp;
+                        <span class="video-pause">&#8214;</span>&nbsp;&nbsp;
+                        <span class="video-play">&#9654;</span>&nbsp;&nbsp;
+                        <span class="video-next">&gt;</span>&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div style="padding:30px; background: rgb(239, 239, 241);margin:50px 0px 30px 0px;">
+                <div class="bottom-grid-nav">
+                    <div class="bottom-nav-title1">
+                        	서울도서관
+                        	<img class="bottom-nav-title1-img" style="width:100%;" src="/img/bluebooks.png" />
+                        	<span class="bottom-detail1-btn">&#5167;</span>
+                    </div>
+                    <div class="bottom-detail-grid1">
+                        <ul>
+                            <li><a href="#">소장자료 검색</a></li>
+                            <li><a href="#">전자책&middot;오디오북</a></li>
+                            <li><a href="#">서울시 발간물</a></li>
+                            <li><a href="#">서울시 발간원문</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">새로 들어온 책</a></li>
+                            <li><a href="#">대출이 많은 책</a></li>
+                            <li><a href="#">전시된 책</a></li>
+                            <li><a href="#">희망도서 신청</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">일정 및 행사</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">도서관 갤러리</a></li>
+                            <li><a href="#">서울도서관에 바란다</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">강좌신청</a></li>
+                            <li><a href="#">기획전시</a></li>
+                            <li><a href="#">단체방문 신청</a></li>
+                            <li><a href="#">시설&middot;기기 이용</a></li>
+                        </ul>
+                    </div>
+                    <div class="bottom-nav-title2">
+                        	대표도서관
+                        	<img class="bottom-nav-title1-img" style="width:100%;" src="/img/navylibrary.png" />
+                        	<span class="bottom-detail2-btn">&#5167;</span>
+                    </div>
+                    <div class="bottom-detail-grid2">
+                        <ul>
+                            <li><a href="#">서울의 도서관 찾기</a></li>
+                            <li><a href="#">도서관 자료 통합검색</a></li>
+                            <li><a href="#">서울의 책방 찾기</a></li>
+                            <li><a href="#">서울지식이음축제&middot;포럼</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">정책자료실</a></li>
+                            <li><a href="#">도서관 직원교육</a></li>
+                            <li><a href="#">한 책 자료실</a></li>
+                            <li><a href="#">독서동아리 자료실</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <span class="go-first">&#94;</span>
+            </section>
+            <footer>
+                
+            </footer>
+            <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+            <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+            <script src="/js/imgslider.js" type="text/javascript" charset="utf-8"></script>
+            <script src="/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+            <script>
+                $(document).ready(function(){
+					
+                	$(".img-slider").height($(".img-slider-content1").height());
+                	
+                    $(".current-date").text(getToday());
+                    $('.opening-time').append(getOpeningTime());
+                    $(".search-icon").click(function(){
+                        $(".search-form").submit();
+                    })
+                   
+                    var notifyIdx=1;
+                    var nofifyContent = ["2021 서울시 식생활교육 학부모강사 신규(10기) 양성과정 수강생모집",
+                    "천호공원 세계축제",
+                    "2021공공미술 시민아이디어 구현 작가공모",
+                    "특허청-서울시 아이디어 공모전"];
+                    setInterval(function(){
+                        notifyIdx+=1
+                        $('.notify-content').text(nofifyContent[notifyIdx]);
+                        if(notifyIdx==4){
+                            notifyIdx=1
+                        }
+                    }, 5000);
+                   
+                    var play = true;
+                    var videoSliderImgs =["/img/videoimg1.jpg","/img/videoimg2.jpg","/img/videoimg3.jpg","/img/videoimg4.jpg","/img/videoimg5.jpg"]
+                    var videoIdx = 0;
+                    setInterval(function(){
+                        if(play==true){  
+                            videoIdx +=1; 
+                            $(".video-slider-img").attr('src',videoSliderImgs[videoIdx]);
+                            $(".video-slider-img-num").text(videoIdx+1);
+                           
+                            if(videoIdx==4){
+                                videoIdx= -1;
+                            }
+                        }
+
+                    },2000);
+
+                    $('.language-opt').click(function(){
+                        if($('.language-table').css("display")=="none"){
+                            $('.language-table').show();
+                        }else{
+                            $('.language-table').hide();
+                        }
+                        
+                    });
+
+                    $('.hamburger').click(function(){
+                        $(".nav-detail-menu").show();
+                    })
+
+                    $('.detail-menu-close').click(function(){
+                        $(".nav-detail-menu").hide();
+                        $(".nav-detail-menu").css({"position":"absolute", "top":"0px","left":"0px"})
+                    })
+
+                    $(".go-first").click(function(){
+                        $('html').scrollTop(0);
+                    });
+                    
+                    
+                    $('.bottom-detail1-btn').click(function(){
+                    	if($(".bottom-detail-grid1").css("display")=='none'){
+                    		$(".bottom-detail-grid1").css({"display":"grid"})
+                    		$('.bottom-detail1-btn').text("ᐱ");
+                    	}else{
+                    		$(".bottom-detail-grid1").css({"display":"none"})
+                    		$('.bottom-detail1-btn').text("ᐯ");
+                    	}
+                        
+                    });
+                    
+                    $('.bottom-detail2-btn').click(function(){
+                    	if($(".bottom-detail-grid2").css("display")=='none'){
+                    		$(".bottom-detail-grid2").css({"display":"grid"})
+                    		$('.bottom-detail2-btn').text("ᐱ");
+                    	}else{
+                    		$(".bottom-detail-grid2").css({"display":"none"})
+                    		$('.bottom-detail2-btn').text("ᐯ");
+                    	}
+                        
+                    });
+                    
+                    
+                    $(".video-prev").click(function(){
+                        play=false;
+                        if(videoIdx==-1 || videoIdx==0){
+                            $(".video-slider-img").attr('src',videoSliderImgs[4]);
+                            $(".video-slider-img-num").text(5);
+                            videoIdx=4;
+                        }else{
+                            $(".video-slider-img").attr('src',videoSliderImgs[videoIdx-1]);
+                            $(".video-slider-img-num").text(videoIdx);
+                            videoIdx-=1;
+                        }
+                        
+                    });
+                    $(".video-pause").click(function(){
+                        play=false;
+                    });
+                    $(".video-play").click(function(){
+                        play=true;
+                    });
+                    $(".video-next").click(function(){
+                        play=false;
+                        if(videoIdx==4){
+                            $(".video-slider-img").attr('src',videoSliderImgs[0]);
+                            $(".video-slider-img-num").text(1);
+                            videoIdx=0;
+                        }else{
+                            $(".video-slider-img").attr('src',videoSliderImgs[videoIdx+1]);
+                            $(".video-slider-img-num").text(videoIdx+2);
+                            videoIdx+=1;
+                        }
+                    });
+                    
+                   
+                    
+                    $("#slick-slider1").slick({
+                        infinite: true,
+                        slidesToShow: 5,
+                        slidesToScroll: 5,
+                        speed : 500,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+        				arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+        				dots : false,
+        				vertical : false,		// 세로 방향 슬라이드 옵션
+        				prevArrow : "<button type='button' class='slick-prev'></button>",		// 이전 화살표 모양 설정
+        				nextArrow : "<button type='button' class='slick-next'></button>",		// 다음 화살표 모양 설정
+        				responsive: [ // 반응형 웹 구현 옵션
+        					{  
+        						breakpoint: 1000, //화면 사이즈 960px
+        						settings: {
+        							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        							 infinite: true,
+                        			 slidesToShow: 3,
+                        			 slidesToScroll: 3,
+        						} 
+        					},
+        					{ 
+        						breakpoint: 755, //화면 사이즈 768px
+        						settings: {	
+        							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        							infinite: true,
+                       			 slidesToShow: 2,
+                       			 slidesToScroll: 2,
+        						} 
+        					}
+        				]
+
+                      });
+                    
+                    $("#slick-slider2").slick({
+                        infinite: true,
+                        slidesToShow: 5,
+                        slidesToScroll: 5,
+                        speed : 500,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+        				arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+        				dots : false,
+        				vertical : false,		// 세로 방향 슬라이드 옵션
+        				prevArrow : "<button type='button' class='slick-prev'></button>",		// 이전 화살표 모양 설정
+        				nextArrow : "<button type='button' class='slick-next'></button>",		// 다음 화살표 모양 설정
+        				responsive: [ // 반응형 웹 구현 옵션
+        					{  
+        						breakpoint: 1000, //화면 사이즈 960px
+        						settings: {
+        							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        							 infinite: true,
+                        			 slidesToShow: 3,
+                        			 slidesToScroll: 3,
+        						} 
+        					},
+        					{ 
+        						breakpoint: 755, //화면 사이즈 768px
+        						settings: {	
+        							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+        							infinite: true,
+                       			 slidesToShow: 2,
+                       			 slidesToScroll: 2,
+        						} 
+        					}
+        				]
+                      });
+                    
+                });
+				
+                
+                $(window).scroll(function(){
+                        var navOffSetTop = $(".nav-detail-menu").offset().top;
+                        var navOffSetBottom = $(".offset-info").offset().top;
+                        var scrollOffSetY = $(window).scrollTop();
+                        if($(".nav-detail-menu").css("display")!="none"){
+                            if(navOffSetTop<scrollOffSetY){
+                                $(".nav-detail-menu").css({"position":"fixed", "top":"0px","left":"0px"});
+                            }else if(navOffSetBottom>scrollOffSetY){
+                                $(".nav-detail-menu").css({"position":"absolute", "top":"0px","left":"0px"});
+                            }
+                        }else{ 
+                            if(navOffSetBottom<scrollOffSetY){
+                                $(".m-top-fix").css({"position":"fixed", "top":"0px","left":"0px"});
+                                $(".m-top-fix-menu").show();
+                                $(".go-first").show();
+                            }else{
+                                $(".m-top-fix").css({"position":"static"});
+                                $(".m-top-fix-menu").hide();
+                                $(".go-first").hide();
+                            }
+                        }
+                        
+                        var windowWidth = window.innerWidth;
+                        if(windowWidth>650){
+                        	$(".bottom-detail-grid1").show();
+                        	$(".bottom-detail-grid2").show();
+                        }
+                    });
+                
+                function getToday(){
+                    let today = new Date();   
+
+                    let year = today.getFullYear(); // 년도
+                    let month = today.getMonth() + 1;  // 월
+                    let date = today.getDate();  // 날짜
+                    return year+"년 "+(("00"+month.toString()).slice(-2))+"월 "+(("00"+date.toString()).slice(-2))+"일";
+                }
+                
+                function getOpeningTime(){
+                    let today = new Date();   
+
+                    let date = today.getDay();  // 날짜
+                    if(date==6 || date==7){
+                        return "개관 9:00 ~ 19:00";
+                    }else if(date==1){
+                        return "월요일은 휴관입니다.";
+                    }else{
+                        return "개관 9:00 ~ 17:00";
+                    }
+                    
+                }
+
+            </script>
+        </body>
+    </html>

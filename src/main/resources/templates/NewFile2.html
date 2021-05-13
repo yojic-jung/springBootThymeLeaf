@@ -1,0 +1,91 @@
+<!DOCTYPE html >
+    <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalabe=no">
+            <style>
+                html, body{
+                    padding:0px;
+                    margin:0px;
+                    font-family:'Apple SD Gothic Neo','Malgun Gothic' ;
+                }
+            </style>
+        </head>
+        <body>
+        	<table>
+        		<tr>
+        			<td>이메일</td><td>이름</td><td>생년월일</td><td>폰번호</td>
+        		</tr>
+        		<tr th:each="person : ${list}"  th:if="${person.certify=='인증'}">
+        			<td th:text="${person.email}"></td>
+        			<td th:text="${person.name}"></td>
+        			<td th:text="${person.birth}"></td>
+        			<td th:text="${person.phone}"></td>
+        			<td th:if="${person.certify=='인증'}">인증완료</td>
+        			<td th:with="career=${#strings.defaultString('경력 '+person.career+'년','경력없음')}">
+        				<th:block th:text="*{career}">
+        			</td>
+        		</tr>
+        	</table>
+        	<table th:each="person : ${list}"  th:if="${person.certify=='인증'}">
+        		<tr>
+        			<td colspan="4" th:text="${person}"></td>
+        		</tr>
+        		<tr>
+        			<td th:text="'이메일 : '+${person.email}"></td>
+        			<td th:text="'이름 : '+${person.name}"></td>
+        		</tr>
+        		<tr>
+        			<td th:text="'생년월일 : '+${person.birth}"></td>
+        			<td th:text="'휴대폰번호 : '+${person.phone}"></td>
+        		</tr>
+        	</table>
+        	
+        	<th:block th:utext="${htmlTag}"></th:block>
+        	<th:block th:text="${htmlTag}"></th:block>
+        	<th:block th:text="${xssAttack}"></th:block>
+        	
+        	
+        	<table th:object="${person}">
+        		<tr>
+        			<td th:text="*{email}"></td>
+        			<td th:text="*{name}"></td>
+        		</tr>
+        	</table>
+        	
+        	<a th:href="@{/greeting}" >타임리프 링크</a>
+        	
+        	
+        	<div th:text="${stringList[0]}"></div>
+            <div>
+            	여기서 테스트 타임리프 테스트 리스트 두번째값 <th:block th:text="${stringList[1]}"></th:block>  그다음은 세번째 값<th:block th:text="${stringList[2]}"></th:block>
+            </div>
+            
+            <div th:attr="data=|${stringList[3]}|">
+            	<th:block th:with="career=${#strings.defaultString('경력 '+person.career+'년','경력없음')}">
+            		<th:block th:text="*{career}">
+            </div>
+            
+            <table th:each="person : ${list}">
+            	<th:block th:switch="${person.certify}" >
+            	<tr th:case="인증">
+            		<td th:text="${person.email}"></td>
+            		<td th:text="${person.name}"></td>
+            		<td th:text="${person.birth}"></td>
+            		<td th:text="${person.phone}"></td>
+            	</tr>
+            	<tr th:case="*">
+            		<td colspan="4"> 미인증 회원</td>
+            	</tr>
+            </table>
+            
+            <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+            <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+            <script th:inline="javascript">
+                $(document).ready(function(){
+                	var test = [[ ${test} ]];
+                });
+
+            </script>
+
+        </body>
+    </html>
