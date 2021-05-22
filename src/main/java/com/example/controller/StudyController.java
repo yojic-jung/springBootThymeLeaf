@@ -78,9 +78,13 @@ public class StudyController {
 		
 		@GetMapping("/appleLoginPage")
 		public String appleLoginPage(Model model) {
-			
 			return "appleLoginPage";
 		}
 		
+		@GetMapping("/appleLoginCallBack")
+		public String appleLoginCallBack(Model model) {
+			
+			return "appleLoginCallBack";
+		}
 		
 }
