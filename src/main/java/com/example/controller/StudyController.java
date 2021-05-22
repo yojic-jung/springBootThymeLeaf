@@ -254,7 +254,7 @@ public class StudyController {
 	        Object obj2 = parser.parse(payLoad);
 	        JSONObject jsonObj2 = (JSONObject) obj2;
 	        String apple_email = (String) jsonObj2.get("email");
-	        
+	        System.out.println(apple_email);
 	        model.addAttribute("email", apple_email);
 	        
 			return "appleLoginCallBack";
