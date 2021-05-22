@@ -75,4 +75,12 @@ public class StudyController {
 			
 			return "NewFile2";   // html name
 		}
+		
+		@GetMapping("/appleLoginPage")
+		public String appleLoginPage(Model model) {
+			
+			return "appleLoginPage";
+		}
+		
+		
 }
