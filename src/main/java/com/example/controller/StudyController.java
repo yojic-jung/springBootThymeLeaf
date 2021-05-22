@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.model.BookLibrary;
 import com.example.model.PersonInfo;
@@ -95,7 +97,7 @@ public class StudyController {
 			return "appleLoginPage";
 		}
 		
-		@GetMapping("/appleLoginCallBack")
+		@RequestMapping(value = "/appleLoginCallBack", method = {RequestMethod.GET, RequestMethod.POST})
 		public String appleLoginCallBack(@RequestBody String apple_data, HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) throws java.text.ParseException, JsonParseException, JsonMappingException, IOException, ParseException  {
 			String[] datas = apple_data.split("[&]");
 			String code = "";
