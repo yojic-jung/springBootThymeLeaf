@@ -176,13 +176,16 @@ public class StudyController {
 	       
 	        String aud = payload.getAudience().get(0);
 	        String iss = payload.getIssuer();
+	      
 	        String nonce =(String)payload.getClaim("nonce");
 	        if (!currentTime.before(payload.getExpirationTime())) {
 	        	model.addAttribute("appleCerity", "fail");
 	        	 System.out.println("토큰만료 오류");
 	        	 return "appleLoginCallBack";
 	        }
-	        if (!aud.equals("com.coksabu.coksabu")) {
+	        
+	        //aud 수정필요
+	        if (!aud.equals("com.lessonwang.coksabu")) {
 	        	model.addAttribute("appleCerity", "fail");
 	        	System.out.println("aud 오류");
 	        	return "appleLoginCallBack";
@@ -197,12 +200,18 @@ public class StudyController {
 	        	System.out.println("nonce 오류");
 	        	return "appleLoginCallBack";
 	        }
-
+	        
+	        String email = (String)payload.getClaim("email");
+	        System.out.println(email);
+	        model.addAttribute("email", email);
+	        
 	        
 	        //여기까지만 구현해도 사실상 웹에서는 상관없음
 	        
 	        
-	      //client_secret생성 
+	      /*client_secret생성 
+	       * 
+	       *키파일 필요함
 	        ClassPathResource resource = new ClassPathResource("AuthKey_6GLL8F2426.p8");
 	        String privateKey = new String(Files.readAllBytes(Paths.get(resource.getURI())));
 	        Reader pemReader = new StringReader(privateKey);
@@ -255,7 +264,7 @@ public class StudyController {
 	        JSONObject jsonObj2 = (JSONObject) obj2;
 	        String apple_email = (String) jsonObj2.get("email");
 	        System.out.println(apple_email);
-	        model.addAttribute("email", apple_email);
+	        */
 	        
 			return "appleLoginCallBack";
 		}
