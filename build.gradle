@@ -20,6 +20,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'junit:junit:4.12'
+	
+	implementation 'com.nimbusds:nimbus-jose-jwt:8.4'
+
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

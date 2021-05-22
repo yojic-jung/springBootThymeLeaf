@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.model.BookLibrary;
 import com.example.model.PersonInfo;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.sun.el.parser.ParseException;
 
 @Controller
 public class StudyController {
@@ -92,8 +96,19 @@ public class StudyController {
 		}
 		
 		@GetMapping("/appleLoginCallBack")
-		public String appleLoginCallBack(@RequestBody String apple_data, HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) {
-			
+		public String appleLoginCallBack(@RequestBody String apple_data, HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) throws java.text.ParseException, JsonParseException, JsonMappingException, IOException, ParseException  {
+			String[] datas = apple_data.split("[&]");
+			String code = "";
+			String id_token = "";
+			for(String data : datas ) {
+				if(data.contains("code=")) {
+					code = data.replace("code=", "");
+				}
+				if(data.contains("id_token=")) {
+					id_token = data.replace("id_token=", "");
+				}
+			}
+			System.out.println(id_token);
 			return "appleLoginCallBack";
 		}
 		
