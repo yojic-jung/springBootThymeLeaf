@@ -13,6 +13,11 @@ import com.example.model.PersonInfo;
 @Controller
 public class StudyController {
 		
+		@GetMapping("")
+		public String index(Model model) {
+			return "index";
+		}
+		
 		@GetMapping("/greeting")
 		public String greeting(Model model) {
 			BookLibrary library = new BookLibrary();
