@@ -82,32 +82,32 @@ public class StudyController {
 		public String modelTest(Model model) {
 			PersonInfo personInfo = new PersonInfo();
 			personInfo.setEmail("dywlr@naver.com");
-			personInfo.setName("Á¤¿äÁ÷");
+			personInfo.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			personInfo.setBirth("930727");
 			personInfo.setPhone("01086491176");
-			personInfo.setCertify("ÀÎÁõ");
+			personInfo.setCertify("ï¿½ï¿½ï¿½ï¿½");
 			personInfo.setCareer("4");
 			
 			PersonInfo personInfo2 = new PersonInfo();
 			personInfo2.setEmail("ekhdcks@naver.com");
-			personInfo2.setName("ÃÖµ¿Âù");
+			personInfo2.setName("ï¿½Öµï¿½ï¿½ï¿½");
 			personInfo2.setBirth("930321");
 			personInfo2.setPhone("01076787700");
-			personInfo2.setCertify("¹ÌÀÎÁõ");
+			personInfo2.setCertify("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			
 			PersonInfo personInfo3 = new PersonInfo();
 			personInfo3.setEmail("ekfgns@naver.com");
-			personInfo3.setName("±è´ÞÈÆ");
+			personInfo3.setName("ï¿½ï¿½ï¿½ï¿½ï¿½");
 			personInfo3.setBirth("930205");
 			personInfo3.setPhone("01073020978");
-			personInfo3.setCertify("ÀÎÁõ");
+			personInfo3.setCertify("ï¿½ï¿½ï¿½ï¿½");
 			
 			List<PersonInfo> list = new ArrayList<>();
 			list.add(personInfo);
 			list.add(personInfo2);
 			list.add(personInfo3);
-			String htmlTag = "<h1>H1 ÅØ½ºÆ® Å×½ºÆ®</h1>"; 
-			String xssAttack = "<script>alert('½ºÅ©¸³Æ® °ø°Ý °³½Ã!');</script>"; 
+			String htmlTag = "<h1>H1 ï¿½Ø½ï¿½Æ® ï¿½×½ï¿½Æ®</h1>"; 
+			String xssAttack = "<script>alert('ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!');</script>"; 
 			
 			List<String> stringList = new ArrayList<>();
 			stringList.add("A");
@@ -134,6 +134,8 @@ public class StudyController {
 			
 			return "appleLoginPage";
 		}
+		
+		
 		
 		@RequestMapping(value = "/appleLoginCallBack", method = {RequestMethod.GET, RequestMethod.POST})
 		public String appleLoginCallBack(@RequestBody String apple_data, Model model, HttpServletRequest request) throws ParseException, JOSEException, org.json.simple.parser.ParseException, IOException {
@@ -180,24 +182,24 @@ public class StudyController {
 	        String nonce =(String)payload.getClaim("nonce");
 	        if (!currentTime.before(payload.getExpirationTime())) {
 	        	model.addAttribute("appleCerity", "fail");
-	        	 System.out.println("ÅäÅ«¸¸·á ¿À·ù");
+	        	 System.out.println("ï¿½ï¿½Å«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	        	 return "appleLoginCallBack";
 	        }
 	        
-	        //aud ¼öÁ¤ÇÊ¿ä
+	        //aud ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½
 	        if (!aud.equals("com.lessonwang.coksabu")) {
 	        	model.addAttribute("appleCerity", "fail");
-	        	System.out.println("aud ¿À·ù");
+	        	System.out.println("aud ï¿½ï¿½ï¿½ï¿½");
 	        	return "appleLoginCallBack";
 	        }
 	        if (!iss.contains("https://appleid.apple.com")) {
 	        	model.addAttribute("appleCerity", "fail");
-	        	System.out.println("iss ¿À·ù");
+	        	System.out.println("iss ï¿½ï¿½ï¿½ï¿½");
 	        	return "appleLoginCallBack";
 	        }
 	        if (!nonce.equals("75dbac00-b326-42fa-86b4-dde6b38c7201")) {
 	        	model.addAttribute("appleCerity", "fail");
-	        	System.out.println("nonce ¿À·ù");
+	        	System.out.println("nonce ï¿½ï¿½ï¿½ï¿½");
 	        	return "appleLoginCallBack";
 	        }
 	        
@@ -206,12 +208,12 @@ public class StudyController {
 	        model.addAttribute("email", email);
 	        
 	        
-	        //¿©±â±îÁö¸¸ ±¸ÇöÇØµµ »ç½Ç»ó À¥¿¡¼­´Â »ó°ü¾øÀ½
+	        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½Ç»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	        
 	        
-	      /*client_secret»ý¼º 
+	      /*client_secretï¿½ï¿½ï¿½ï¿½ 
 	       * 
-	       *Å°ÆÄÀÏ ÇÊ¿äÇÔ
+	       *Å°ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
 	        ClassPathResource resource = new ClassPathResource("AuthKey_6GLL8F2426.p8");
 	        String privateKey = new String(Files.readAllBytes(Paths.get(resource.getURI())));
 	        Reader pemReader = new StringReader(privateKey);
